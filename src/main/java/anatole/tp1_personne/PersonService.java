@@ -1,8 +1,12 @@
 package anatole.tp1_personne;
 
-import java.util.List;
+import org.springframework.stereotype.Service;
 
-public interface PersonRepository {
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public interface PersonService {
     /**
      * Get the list of all persons registered
      * @return
@@ -14,37 +18,37 @@ public interface PersonRepository {
      * @param id
      * @return
      */
-    Person get(int id);
+    Optional<Person> get(int id);
 
     /**
      * Get a single person by name.
-     * @param nom
+     * @param name
      * @return
      */
-    Person get_by_name(String nom);
+    Optional<Person> get_by_name(String name);
 
     /**
      * Get a signale person by firstname.
-     * @param prenom
+     * @param firstname
      * @return
      */
-    Person get_by_firstname(String prenom);
+    Optional<Person> get_by_firstname(String firstname);
 
     /**
      * Create a new person.
-     * @param personne
+     * @param person
      */
-    void create(Person personne);
+    void create(Person person);
 
     /**
      * Delete a person.
-     * @param personne
+     * @param id
      */
-    void delete(Person personne);
+    void delete(int id);
 
     /**
      * Update a person.
-     * @param personne
+     * @param person
      */
-    void update(Person personne);
+    void update(Person person);
 }
