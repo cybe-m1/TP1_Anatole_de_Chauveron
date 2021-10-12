@@ -22,12 +22,10 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Optional<Person> get(int id) {
-        Optional<Person> person = personList
+        return personList
                 .stream()
                 .filter(p -> p.getId() == id)
                 .findFirst();
-
-        return person;
     }
 
     @Override
@@ -57,10 +55,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void delete(int id) {
-        Optional<Person> person_to_delete = personList
-                .stream()
-                .filter(p -> p.getId() == id)
-                .findFirst();
+        Optional<Person> person_to_delete = Optional.ofNullable(personList.get(id));
 
         person_to_delete.ifPresent(p -> {
             personList.remove(p);
@@ -69,10 +64,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void update(Person person) {
-        Optional<Person> person_to_upate = personList
-                .stream()
-                .filter(p -> p.getId() == person.getId())
-                .findFirst();
+        Optional<Person> person_to_upate = Optional.ofNullable(personList.get(person.getId()));
 
         person_to_upate.ifPresent(p -> {
             p.setFirstname(person.getFirstname());
