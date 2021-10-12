@@ -34,7 +34,7 @@ public class PersonServiceImpl implements PersonService {
     public Optional<Person> get_by_name(String name) {
         Optional<Person> person = personList
                 .stream()
-                .filter(p -> p.getName() == name)
+                .filter(p -> p.getName().equals(name))
                 .findFirst();
 
         return person;
@@ -44,7 +44,7 @@ public class PersonServiceImpl implements PersonService {
     public Optional<Person> get_by_firstname(String firstname) {
         Optional<Person> person = personList
                 .stream()
-                .filter(p -> p.getFirstname() == firstname)
+                .filter(p -> p.getFirstname().equals(firstname))
                 .findFirst();
 
         return person;
